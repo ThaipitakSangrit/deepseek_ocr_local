@@ -18,8 +18,8 @@ model = model.eval().cuda().to(torch.bfloat16)
 prompt = "<image>\nFree OCR. "
 # prompt = "<image>\n<|grounding|>Convert the document to markdown. "
 
-image_folder = r'D:/work/python/ocr_utl3_test_infer_deepseek_ocr/images'
-result_path = r'D:/work/python/ocr_utl3_test_infer_deepseek_ocr/results'
+image_folder = r'D:/work/python/project_infer_deepseek_ocr/images'
+result_path = r'D:/work/python/project_infer_deepseek_ocr/results'
 
 # อ่านไฟล์รูปทั้งหมด (รองรับ .jpg, .png, .jpeg)
 image_files = []
@@ -43,4 +43,5 @@ for i, image_file in enumerate(image_files, 1):
     res = model.infer(tokenizer, prompt=prompt, image_file=image_file, output_path = result_path + '/' + os.path.basename(image_file), base_size = 1024, image_size = 640, crop_mode=True, save_results = True, test_compress = True)
     # res = model.infer(tokenizer, prompt=prompt, image_file=image_file, output_path=result_path, base_size = 1024, image_size = 640, crop_mode=True, save_results = True, test_compress = True)
     
+
     print(res)
