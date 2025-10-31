@@ -1,0 +1,20 @@
+py --list
+py -3.11 -m venv .venv
+
+cd .\models\
+git clone https://huggingface.co/deepseek-ai/DeepSeek-OCR # ดาวน์โหลดโค้ด
+
+pip install transformers==4.46.3
+pip install torch==2.0.0+cu117 torchvision==0.15.1+cu117 -f https://download.pytorch.org/whl/cu117/torch_stable.html
+pip install addict
+pip install einops
+pip install easydict
+
+run script download_only_model_deepseek_ocr.py # ดาวน์โหลด weight model
+เปลี่ยนชื่อโฟลเดอร์โมเดลที่โหลดมาด้วย เป็น DeepSeek_OCR [เครื่องหมาย - ไม่ควรใช้]
+
+pip install numpy==1.26.4 --force-reinstall
+pip install tokenizers==0.20.3
+
+เข้าไปในโฟลเดอร์ models\DeepSeek_OCR แล้วเข้าไปในไฟล์ modeling_deepseekocr.py ด้วย เข้าไป เพิ่ม return outputs ให้ฟังก์ชั่น infer()
+
